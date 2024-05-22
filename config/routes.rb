@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :users, only: [:destroy]
   end
 
+scope module: :public do
   devise_for :users
   root to: 'homes#top'
   get 'homes/about', to: 'homes#about', as: :about
@@ -16,4 +17,5 @@ Rails.application.routes.draw do
     resources :post_comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update]
+end
 end
